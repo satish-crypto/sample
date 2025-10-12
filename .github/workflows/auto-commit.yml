@@ -2,7 +2,7 @@ name: Auto Commit & Push
 
 on:
   schedule:
-    - cron: '21 8 * * *'   # Runs daily at 08:21 UTC (01:51 PM IST)
+    - cron: '30 8 * * *'   # Runs daily at 08:30 UTC (02:00 PM IST)
 
 permissions:
   contents: write
