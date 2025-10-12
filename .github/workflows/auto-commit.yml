@@ -2,12 +2,10 @@ name: Auto Commit & Push
 
 on:
   schedule:
-    # Cron schedule is in UTC. IST is UTC+5:30.
-    # 01:45 PM IST = 08:15 AM UTC
-    - cron: '15 8 * * *'   # Runs daily at 08:15 UTC (01:45 PM IST)
+    - cron: '21 8 * * *'   # Runs daily at 08:21 UTC (01:51 PM IST)
 
 permissions:
-  contents: write  # To allow commits
+  contents: write
 
 jobs:
   auto-commit:
@@ -21,8 +19,8 @@ jobs:
       - name: Commit and Push
         uses: offensive-vk/auto-commit-push@v8
         with:
-          name: 'Auto Bot'
-          email: 'bot@example.com'
-          message: 'Keep repo active'
+          name: "Satish's bot"
+          email: "satish@geeksofgurukul.com"
+          message: "Keep repo active"
           branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
