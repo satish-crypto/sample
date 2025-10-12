@@ -1,0 +1,28 @@
+name: Auto Commit & Push
+
+on:
+  schedule:
+    # Cron schedule is in UTC. IST is UTC+5:30.
+    # 01:45 PM IST = 08:15 AM UTC
+    - cron: '15 8 * * *'   # Runs daily at 08:15 UTC (01:45 PM IST)
+
+permissions:
+  contents: write  # To allow commits
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update keepalive.txt
+        run: echo "KeepAlive $(date)" >> keepalive.txt
+
+      - name: Commit and Push
+        uses: offensive-vk/auto-commit-push@v8
+        with:
+          name: 'Auto Bot'
+          email: 'bot@example.com'
+          message: 'Keep repo active'
+          branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
